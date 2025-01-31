@@ -1,0 +1,19 @@
+
+<div class="container mt-4">
+    <div class="card mb-4 custom-card">
+        <div class="card-header bg-light text-dark">カテゴリ一覧</div>
+        <div class="card-body">
+            <ul class="list-unstyled d-flex flex-wrap justify-content-start mx-auto mb-0" style="gap: 15px; padding: 0;">
+                {% for category in categories %}
+                    <li>
+                        <a href="{% url 'myapp:myapp_cat' category.id %}" style="text-decoration: none; color: #007bff; font-size: 1.1rem;">
+                            {{ category.title }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class="text-muted">カテゴリはありません。</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

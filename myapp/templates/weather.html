@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <div class="card mb-4 custom-card">
+        <div class="card-header bg-light text-dark">天気情報</div>
+        <div class="card-body">
+            <ul class="list-unstyled d-flex flex-wrap justify-content-start mx-auto mb-0" style="gap: 15px; padding: 0;">
+                {% if weather %}
+                    <li>
+                        <strong>都市:</strong> {{ weather.name }}
+                    </li>
+                    <li>
+                        <strong>天気:</strong> 
+                        {% with weather.weather.0.description|lower as weather_desc %}
+                            {% if weather_desc == "clear sky" %}
+                                晴れ
+                            {% elif weather_desc == "few clouds" or weather_desc == "scattered clouds" or weather_desc == "broken clouds" %}
+                                曇り
+                            {% elif weather_desc == "shower rain" %}
+                                シャワー雨
+                            {% elif weather_desc == "rain" %}
+                                雨
+                            {% elif weather_desc == "thunderstorm" %}
+                                雷雨
+                            {% elif weather_desc == "snow" %}
+                                雪
+                            {% elif weather_desc == "mist" %}
+                                霧
+                            {% elif weather_desc == "freezing rain" %}
+                                氷雨
+                            {% elif weather_desc == "windy" %}
+                                強風
+                            {% else %}
+                                {{ weather.weather.0.description }}
+                            {% endif %}
+                        {% endwith %}
+                    </li>
+                    <li>
+                        <strong>気温:</strong> {{ weather.main.temp }}°C
+                    </li>
+                {% else %}
+                    <li class="text-muted">天気情報を取得できませんでした。</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

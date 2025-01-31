@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block title %}Registration Complete{% endblock %}
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="col offset-4 py-4">
+            <h3>ようこそ{{ record.user.username }}さん</h3>
+            <p><a href="#">ログインはこちら</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<div class="list_container">
+    <table class="table">
+        <tbody>
+            {% for record in object_list %}
+            <tr>
+                <td class="text-center" rowspan="2">
+                    <img src="{{ record.image1.url }}" class="img-fluid custom-img" alt="{{ record.title }}">
+                </td>
+                <td class="card-title text-primary">
+                    <a href="{% url 'myapp:myapp_detail' record.pk %}" class="text-primary" target="_blank">{{ record.title }}</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-muted small">
+                    投稿日時: {{ record.posted_at|date:"Y年m月d日 H:i" }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .list_container {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .custom-img {
+        width: 100%;
+        height: auto;
+        max-height: 150px;
+        object-fit: contain;
+    }
+
+    .table {
+        width: 40%;
+        max-width: 700px;
+        border-collapse: collapse;
+        border: none;
+    }
+
+    td {
+        padding: 6px;
+        text-align: left;
+        vertical-align: middle;
+        border: none;
+    }
+
+    .card-title a {
+        font-size: 1.1rem;
+        word-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        display: inline-block; /* 必要な場合は inline-block に */
+        text-decoration: none; /* 下線を消す */
+    }
+
+    .card-title a:hover {
+        text-decoration: underline; /* ホバー時に下線を追加 */
+    }
+
+    .card-text {
+        font-size: 0.85rem;
+    }
+</style>
